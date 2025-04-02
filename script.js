@@ -18,8 +18,6 @@ const agregar = ( ) => {
 const mostrar = () => {
     let lista = document.getElementById("lista")
     lista.innerHTML = ""
-    
-
         tareas.forEach((t, id) =>  {
             let estaCheck = t.estado ? "checked" : ""
             let fechaC = new Date(t.fechaCreacion).toLocaleString()
@@ -29,6 +27,7 @@ const mostrar = () => {
                 <span style="text-decoration: ${t.estado ? "line-through" : "none"}">${t.texto}</span>
                 <small>Creado: ${fechaC}</small>
                 <small>Tachado: ${t.fechaTachado ? t.fechaTachado : "-"}</small>
+                <button onclick="eliminar(${id})">Eliminar</button>
             </li>`;
         })
 
@@ -40,6 +39,14 @@ const marcar = (id) => {
     let fechaT = tareas[id].estado ? new Date() : null
     tareas[id].fechaTachado = fechaT ? fechaT.toLocaleString() : null
     mostrar()
+}
+
+const eliminar = (id) => {
+    let confirmar = confirm("¿Está seguro de eliminar la tarea?")
+    if (confirmar) {
+        tareas.splice(id, 1)
+        mostrar()
+    }
 }
 
 
