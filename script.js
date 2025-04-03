@@ -25,9 +25,8 @@ const mostrar = () => {
             lista.innerHTML += `
             <li>
                 <input type="checkbox" id="checkbox-${id}" onchange="marcar(${id})" ${estaCheck}>
-                <span style="text-decoration: ${t.estado ? "line-through" : "none"}">${t.texto}</span>
-                <small>Creado: ${fechaC}</small>
-                <small>Tachado: ${t.fechaTachado ? t.fechaTachado : "-"}</small>
+                <span style="text-decoration: ${t.estado ? "line-through" : "none"}" id="t">${t.texto}</span>
+                <p id="ct">Creado: ${fechaC} Tachado: ${t.fechaTachado ? t.fechaTachado : "-"}</p>
                 <button id="eliminar" onclick="eliminar(${id})">Eliminar</button>
             </li>`;
            
